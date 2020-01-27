@@ -1,6 +1,7 @@
 package com.wjz.seata.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.wjz.seata.domain.Trade;
@@ -13,6 +14,7 @@ public class TradeServiceImpl implements TradeService {
 	private TradeMapper mapper;
 
 	@Override
+	@Transactional
 	public void insert(String name) {
 		Trade trade = new Trade();
 		trade.setName(name);
