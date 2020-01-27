@@ -1,0 +1,6 @@
+com\wjz\seata\mapper\FinanceMapper.class
+com\wjz\seata\mybatis\MybatisConfiguration.class
+com\wjz\seata\service\FinanceService.class
+com\wjz\seata\service\FinanceServiceImpl.class
+com\wjz\seata\domain\Finance.class
+com\wjz\seata\SeataFinanceApplication.class

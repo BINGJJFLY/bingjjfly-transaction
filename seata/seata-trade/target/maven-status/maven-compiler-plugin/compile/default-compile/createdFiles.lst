@@ -1,0 +1,5 @@
+com\wjz\seata\mybatis\MybatisConfiguration.class
+com\wjz\seata\domain\Trade.class
+com\wjz\seata\service\TradeService.class
+com\wjz\seata\SeataTradeApplication.class
+com\wjz\seata\mapper\TradeMapper.class
