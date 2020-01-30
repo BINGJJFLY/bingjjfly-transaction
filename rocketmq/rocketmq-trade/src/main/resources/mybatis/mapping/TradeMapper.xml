@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wjz.rocketmq.mapper.TradeMapper">
+	<resultMap id="TradeResultMap" type="com.wjz.rocketmq.domain.Trade">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="insert" parameterType="Trade">
+		INSERT INTO trade (NAME) VALUES (#{name})
+	</insert>
+	
+	<insert id="insertLog" parameterType="string">
+		INSERT INTO trade_tx_log (GTX_ID, ADD_TIME) VALUES (#{gtxId}, now())
+	</insert>
+	
+	<select id="isInserted" resultType="int">
+		SELECT COUNT(1) FROM trade_tx_log WHERE GTX_ID = #{gtxId}
+	</select>
+</mapper>
