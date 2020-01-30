@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wjz.hmily.mapper.FinanceMapper">
+	<resultMap id="FinanceResultMap" type="com.wjz.hmily.domain.Finance">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="insert" parameterType="Finance">
+		INSERT INTO finance (NAME) VALUES (#{name})
+	</insert>
+	
+	<delete id="delete" parameterType="Finance">
+		DELETE FROM finance WHERE NAME = #{name}
+	</delete>
+	
+	<insert id="insertTryLog" parameterType="string">
+		INSERT INTO finance_try_log (GTX_ID, ADD_TIME) VALUES (#{gtxId}, now())
+	</insert>
+	
+	<insert id="insertConfirmLog" parameterType="string">
+		INSERT INTO finance_confirm_log (GTX_ID, ADD_TIME) VALUES (#{gtxId}, now())
+	</insert>
+	
+	<insert id="insertCancelLog" parameterType="string">
+		INSERT INTO finance_cancel_log (GTX_ID, ADD_TIME) VALUES (#{gtxId}, now())
+	</insert>
+	
+	<select id="isTried" resultType="int">
+		SELECT COUNT(1) FROM finance_try_log WHERE GTX_ID = #{gtxId}
+	</select>
+	
+	<select id="isConfirmed" resultType="int">
+		SELECT COUNT(1) FROM finance_confirm_log WHERE GTX_ID = #{gtxId}
+	</select>
+	
+	<select id="isCanceled" resultType="int">
+		SELECT COUNT(1) FROM finance_cancel_log WHERE GTX_ID = #{gtxId}
+	</select>
+</mapper>
