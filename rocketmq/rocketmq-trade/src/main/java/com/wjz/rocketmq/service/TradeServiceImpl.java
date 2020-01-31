@@ -23,10 +23,10 @@ public class TradeServiceImpl implements TradeService {
 		if (mapper.isInserted(gtxId) > 0) {
 			return;
 		}
-		// ==> 插入融资订单
-		Trade Trade = new Trade();
-		Trade.setName(name);
-		mapper.insert(Trade);
+		// ==> 插入交易订单
+		Trade trade = new Trade();
+		trade.setName(name);
+		mapper.insert(trade);
 //		int i = 1 / 0;
 		// ==> 插入业务日志
 		mapper.insertLog(gtxId);
